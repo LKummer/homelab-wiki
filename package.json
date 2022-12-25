@@ -1,0 +1,15 @@
+{
+  "name": "wiki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "hugo server"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "hugo-bin": "^0.97.0"
+  }
+}
