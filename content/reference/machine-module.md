@@ -38,7 +38,9 @@ An example value is shown below.
 * `user` - Generated user for the VM.
 * `password` - Password of the generated user.
 
-The outputs of the module can be used to connect with SSH to the VM:
+The outputs are designed for use with [`terraform_http`]({{< relref "terraform-http-plugin" >}}) and [`terraform_local`]({{< relref "terraform-local-plugin" >}}) Ansible inventory plugins to dynamically populate Ansible inventory with Terraform provisioned VMs.
+
+You may manually SSH to provisioned VMs using values from the outputs:
 
 ```
 ssh <user>@<ssh_ip> -p 2222
