@@ -2,7 +2,10 @@
 title: argo role
 ---
 
-This role configures Argo CD.
+This Ansible role configures Argo CD.
+
+It is designed to configure VMs cloned using [the `machine` Terraform module]({{< relref "machine-module" >}}), and configured [with k3s]({{< relref "k3s-role" >}}) and [prometheus]({{< relref "prometheus-role" >}}) Ansible roles.
+It optionally integrates with the ClusterIssuer deployed by default [by the cert_manager Ansible role]({{< relref "cert-manager-role" >}}).
 
 This role configures Prometheus Operator ServiceMonitor resources to scrape metrics from Argo CD.
 Make sure to **install the `prometheus` role first**.

@@ -2,7 +2,9 @@
 title: k3s role
 ---
 
-This role configures a single node K3s cluster on an Alpine Linux host.
+This Ansible role configures a single node K3s cluster on an Alpine Linux host.
+
+It is designed to configure VMs cloned using [the `machine` Terraform module]({{< relref "machine-module" >}}).
 
 After running, the kubeconfig is fetched to `secrets/k3s.<ip>.yaml` and can be used to authenticate with the cluster.
 

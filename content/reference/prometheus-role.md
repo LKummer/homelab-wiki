@@ -2,11 +2,14 @@
 title: prometheus role
 ---
 
-This role configures a Grafana, Prometheus, Loki and Promtail observability stack.
+This Ansible role configures a Grafana, Prometheus, Loki and Promtail observability stack.
 
 * It installs Prometheus Operator and creates a default Prometheus instance for the cluster.
 * It installs Loki and Promtail, and configures them to scrape logs from all pods running in the cluster.
 * It installs Grafana, and connects it to Loki and the default Prometheus instance.
+
+It is designed to configure VMs cloned using [the `machine` Terraform module]({{< relref "machine-module" >}}), and configured [with k3s Ansible role]({{< relref "k3s-role" >}}).
+It integrates with the ClusterIssuer deployed by default [by the cert_manager role]({{< relref "cert-manager-role" >}}).
 
 The default Prometheus instance should be used for scraping metrics from apps running in the cluster.
 Prometheus Operator PodMonitor and ServiceMonitor resources should be used to configure scraping of metrics.

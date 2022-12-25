@@ -2,7 +2,9 @@
 title: cert_manager role
 ---
 
-This role installs Cert Manager operator and configures a ClusterIssuer that issues Let's Encrypt certificates.
+This Ansible role installs Cert Manager operator and configures a ClusterIssuer that issues Let's Encrypt certificates.
+
+It is designed to configure VMs cloned using [the `machine` Terraform module]({{< relref "machine-module" >}}), and configured [with k3s Ansible role]({{< relref "k3s-role" >}}).
 
 The ClusterIssuer configured by this role issues certificates by solving ACME DNS01 challenge automatically through Cloudflare DNS API.
 This configuration only works for domains using Cloudflare DNS.
