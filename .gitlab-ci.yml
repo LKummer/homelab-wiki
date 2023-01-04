@@ -1,0 +1,13 @@
+image: node:18.12.1-alpine3.16
+
+stages:
+  - deploy
+
+pages:
+  stage: deploy
+  script:
+    - npm ci
+    - npm run build -- --baseURL "${CI_PAGES_URL}"
+  artifacts:
+    paths:
+      - public
