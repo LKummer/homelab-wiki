@@ -1,5 +1,6 @@
 ---
 title: machine module
+weight: 1
 ---
 
 This Terraform module is designed to clone

@@ -1,5 +1,5 @@
 ---
-title: Proxmox API Tokens
+title: How to configure Proxmox credentials
 ---
 
 Proxmox API tokens are needed for authentication when using Packer and Terraform.
