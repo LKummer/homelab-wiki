@@ -16,8 +16,9 @@ Prometheus Operator PodMonitor and ServiceMonitor resources should be used to co
 
 ## Variables
 
-* `prometheus_kube_prometheus_stack_version` - Version of prometheus-community/kube-prometheus-stack Helm chart to deploy. Default is `39.9.0`.
-* `prometheus_loki_stack_version` - Version of grafana/loki-stack Helm chart to deploy. Default is `2.8.0`.
+* `prometheus_kube_prometheus_stack_chart_version` - Version of prometheus-community/kube-prometheus-stack Helm chart to deploy. Default is `44.2.1`.
+* `prometheus_loki_chart_version` - Version of grafana/loki Helm chart to deploy. Default is `4.4.0`.
+* `prometheus_promtail_chart_version` - Version of grafana/promtail Helm chart to deploy. Default is `6.8.1`.
 * `prometheus_grafana_host` - Host for Grafana. **Required**.
 * `prometheus_grafana_user` - Username of the Grafana admin. **Required**.
 * `prometheus_grafana_password` - Password of the Grafana admin. **Required**.
