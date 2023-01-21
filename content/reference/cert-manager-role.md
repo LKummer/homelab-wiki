@@ -33,8 +33,6 @@ Head to Cloudflare dashboard and create an API token [with the permissions speci
   hosts: production
   roles:
     - role: lkummer.homelab.k3s
-      vars:
-        k3s_version: v1.24.3+k3s1
     - role: lkummer.homelab.cert_manager
       vars:
         cert_manager_cloudflare_email: you@example.com

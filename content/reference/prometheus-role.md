@@ -38,8 +38,6 @@ Given a production group in the Ansible inventory, this playbook installs a sing
   hosts: production
   roles:
     - role: lkummer.homelab.k3s
-      vars:
-        k3s_version: v1.24.3+k3s1
     - role: lkummer.homelab.prometheus
       vars:
         prometheus_grafana_host: grafana.example.com

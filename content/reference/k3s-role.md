@@ -26,8 +26,6 @@ Given a `production` group in the Ansible inventory, this playbook installs a si
   hosts: production
   roles:
     - role: lkummer.homelab.k3s
-      vars:
-        k3s_version: v1.24.3+k3s1
 ```
 
 To access the cluster, set the `KUBECONFIG` environment variable to the `k3s.<ip>.yaml` file created in the `secrets` directory.
