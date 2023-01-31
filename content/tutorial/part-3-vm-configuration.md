@@ -13,6 +13,20 @@ It is easiest to use subdomains, for example: `grafana.example.com` and `argo.ex
 
 There are instructions to access Grafana and ArgoCD with `kubectl port-forward` later on if you do not want to mess with DNS or edit your `hosts` file.
 
+## Downloading Ansible Requirements
+
+Change to the `playbook` folder:
+
+```
+cd playbook
+```
+
+Install Ansible Collections from the requirements file:
+
+```
+ansible-galaxy collection install --requirements requirements.yaml
+```
+
 ## Editing Grafana and ArgoCD Hosts
 
 Open up `playbook/main.yaml` and change `prometheus_grafana_host` and `argo_host` to the domains you wish to use.
@@ -31,13 +45,8 @@ The example uses `grafana.example.com` and `argo.example.com` for Grafana and Ar
 
 ## Configuring the VM
 
-Change to the `playbook` folder:
-
-```
-cd playbook
-```
-
-Run the playbook with the following command to configure the VM to run K3s, and deploy Prometheus Operator, Grafana, Loki, Promtail and ArgoCD on it.
+Still in the `playbook` folder,
+run the playbook with the following command to configure the VM to run K3s, and deploy Prometheus Operator, Grafana, Loki, Promtail and ArgoCD on it.
 
 ```
 ansible-playbook --inventory=inventory main.yaml
