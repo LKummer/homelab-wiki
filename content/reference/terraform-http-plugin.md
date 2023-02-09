@@ -2,9 +2,9 @@
 title: terraform_http plugin
 ---
 
-This Ansible inventory plugin templates inventory from Terraform state stored in GitLab Terraform state backend.
+This Ansible inventory plugin templates inventory from Terraform state stored in HTTP Terraform state backend.
 
-It is used for populating Ansible inventory with VMs created with [the `machine` Terraform module]({{< relref "machine-module" >}}) when using local Terraform state.
+It is used for populating Ansible inventory with VMs created with [the `machine` Terraform module]({{< relref "machine-module" >}}) when using HTTP Terraform state backend with GitLab-managed Terraform state.
 
 There is a sister [`terraform_local` Ansible inventory plugin]({{< relref "terraform-local-plugin" >}}) doing the same thing for local Terraform state.
 
@@ -19,6 +19,22 @@ All values accept template strings, which are rendered with Terraform outputs as
 * `ansible_port` - Port to use for SSH connection. **Required**.
 * `ansible_group` - Group to add the host to. **Required**.
 * `vars` - Dictionary of additional host vars to add.
+
+## Terraform Configuration
+
+This inventory plugin works with Terraform HTTP state backend using GitLab-managed Terraform state.
+Make sure to configure Terraform to use the HTTP state backend:
+
+``` hcl
+# Inside versions.tf
+terraform {
+  # ...
+  backend "http" {}
+}
+```
+
+[See GitLab's guide for instructions on configuring the Terraform HTTP state backend.](https://docs.gitlab.com/ee/user/infrastructure/iac/terraform_state.html#migrate-to-a-gitlab-managed-terraform-state)
+It is recommended to use the `.env` example below for configuring your local machine to use GitLab-managed Terraform state.
 
 ## GitLab Authentication
 
