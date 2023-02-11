@@ -35,7 +35,8 @@ An example value is shown below.
 
 ## Outputs
 
-* `ssh_ip` - IP of the cloned VM.
+* `id` - Proxmox virtual machine ID.
+* `ip` - IP of the cloned VM.
 * `user` - Generated user for the VM.
 * `password` - Password of the generated user.
 
@@ -44,7 +45,7 @@ The outputs are designed for use with [`terraform_http`]({{< relref "terraform-h
 You may manually SSH to provisioned VMs using values from the outputs:
 
 ```
-ssh <user>@<ssh_ip> -p 2222
+ssh <user>@<ip> -p 2222
 ```
 
 ## Proxmox Authentication
