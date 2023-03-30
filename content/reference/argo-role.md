@@ -4,11 +4,11 @@ title: argo role
 
 This Ansible role configures Argo CD.
 
-It is designed to configure VMs cloned using [the `machine` Terraform module]({{< relref "machine-module" >}}), and configured [with k3s]({{< relref "k3s-role" >}}) and [prometheus]({{< relref "prometheus-role" >}}) Ansible roles.
+It is designed to configure VMs cloned using [the `machine` Terraform module]({{< relref "machine-module" >}}), and configured [with k3s]({{< relref "k3s-role" >}}) and [observability]({{< relref "observability-role" >}}) Ansible roles.
 It optionally integrates with the ClusterIssuer deployed by default [by the cert_manager Ansible role]({{< relref "cert-manager-role" >}}).
 
 This role configures Prometheus Operator ServiceMonitor resources to scrape metrics from Argo CD.
-Make sure to **install the `prometheus` role first**.
+Make sure to **install the `observability` role first**.
 
 ## Variables
 
@@ -36,11 +36,11 @@ Given a production group in the Ansible inventory, this playbook installs a sing
         cert_manager_cloudflare_email: you@example.com
         cert_manager_cloudflare_token: REDACTED
         cert_manager_cloudflare_zone: example.com
-    - role: lkummer.homelab.prometheus
+    - role: lkummer.homelab.observability
       vars:
-        prometheus_grafana_host: grafana.example.com
-        prometheus_grafana_user: admin
-        prometheus_grafana_password: REDACTED
+        observability_grafana_host: grafana.example.com
+        observability_grafana_user: admin
+        observability_grafana_password: REDACTED
     - role: lkummer.homelab.argo
       vars:
         argo_host: argo.example.com
