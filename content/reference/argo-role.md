@@ -31,6 +31,11 @@ Given a production group in the Ansible inventory, this playbook installs a sing
   hosts: production
   roles:
     - role: lkummer.homelab.k3s
+    - role: lkummer.homelab.cert_manager
+      vars:
+        cert_manager_cloudflare_email: you@example.com
+        cert_manager_cloudflare_token: REDACTED
+        cert_manager_cloudflare_zone: example.com
     - role: lkummer.homelab.prometheus
       vars:
         prometheus_grafana_host: grafana.example.com
