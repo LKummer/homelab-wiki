@@ -44,3 +44,8 @@ Source the `.env` file:
 ```bash
 source .env
 ```
+
+## Next Steps
+
+We are now ready to start cloning VMs.
+[Head over to the next part, where we will be using Terraform to clone VMs.]({{< relref "part-2-vm-clone" >}})

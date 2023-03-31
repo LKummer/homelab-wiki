@@ -45,6 +45,8 @@ Apply the Terraform module to clone the `alpine-3.17.0-1` template to a new VM:
 terraform apply
 ```
 
+Ensure the plan creates a machine, and type `yes` to verify the Terraform plan and apply the resources.
+
 When Terraform is done cloning the VM, it will print the `ssh_ip` and `ssh_user` you can use to connect to the VM:
 
 ```
@@ -64,4 +66,9 @@ Using the `ssh_ip` and `ssh_user` from the previous step, we can connect to the 
 ssh robust-marmoset@192.168.0.173 -p 2222
 ```
 
-The template is configured to use port 2222 for SSH to leave port 22 open for Git servers or [other applications](https://github.com/charmbracelet/wish).
+The template is configured to use port 2222 for SSH to leave port 22 open for Git servers and other applications.
+
+## Next Steps
+
+Now that we have a VM, we are ready to configure it.
+[Head over to the next part, where we will be configuring the VM with Ansible.]({{< relref "part-3-vm-configuration" >}})

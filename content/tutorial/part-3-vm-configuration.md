@@ -2,14 +2,17 @@
 title: Part 3 - Configuring the VM with Ansible
 ---
 
-In this part you will configure the VM you cloned with Ansible.
-By the end you will have K3s running on the VM with ArgoCD, Grafana, Prometheus Operator, Loki and Promtail all ready.
+In this part you will use Ansible to configure the VM you cloned earlier.
+By the end you will have K3s running on the VM with ArgoCD, Cert Manager and an observability stack all ready to use.
 Make sure to have environment variables [configured as described in part 1]({{< relref "part-1-preparation#configuring-environment-variables" >}}).
 
 ## Domains for Grafana and ArgoCD
 
 For the last part of the tutorial you are going to need domains for ArgoCD and Grafana UIs.
 It is easiest to use subdomains, for example: `grafana.example.com` and `argo.example.com`.
+
+If you want TLS to work, you will need to actually own the domains used.
+You can still continue the tutorial without a domain or with an unregistered domain, but TLS certificates will not be issued.
 
 There are instructions to access Grafana and ArgoCD with `kubectl port-forward` later on if you do not want to mess with DNS or edit your `hosts` file.
 
@@ -27,21 +30,42 @@ Install Ansible Collections from the requirements file:
 ansible-galaxy collection install --requirements requirements.yaml
 ```
 
+**Install collection dependencies every time before running Ansible.**
+Collections are not scoped per project, and mixing collection versions between projects may be destructive.
+
 ## Editing Grafana and ArgoCD Hosts
 
-Open up `playbook/main.yaml` and change `prometheus_grafana_host` and `argo_host` to the domains you wish to use.
+Open up `playbook/main.yaml` and change `observability_grafana_host` and `argo_host` to the domains you wish to use.
 The example uses `grafana.example.com` and `argo.example.com` for Grafana and ArgoCD respectively:
 
 ```yaml
 # Inside playbook/main.yaml
-    - role: lkummer.homelab.prometheus
+    - role: lkummer.homelab.observability
       vars:
-        prometheus_grafana_host: grafana.example.com
+        observability_grafana_host: grafana.example.com
         # ...
     - role: lkummer.homelab.argo
       vars:
         argo_host: argo.example.com
 ```
+
+## Editing Cloudflare Credentials For Certificate Issuing
+
+If you are not using a domain you own, skip this section.
+
+Still inside `playbook/main.yaml`: Change `cert_manager_cloudflare_email` to your Cloudflare email, `cert_manager_cloudflare_token` to a Cloudflare API token with `Zone - DNS - Edit` and `Zone - DNS - Read` permissions for the domain you are using, and `cert_manager_cloudflare_zone` to the domain you are using.
+
+```yaml
+# Inside playbook/main.yaml
+    - role: lkummer.homelab.cert_manager
+      vars:
+        cert_manager_cloudflare_email: you@example.com
+        # Use Ansible Vault for actual secrets!
+        cert_manager_cloudflare_token: REDACTED
+        cert_manager_cloudflare_zone: example.com
+```
+
+**Do not commit secrets to Git. Use Ansible Vault or another secret storage solution.**
 
 ## Configuring the VM
 
