@@ -24,7 +24,7 @@ You will have trouble completing this tutorial if any assumptions are broken.
 
 ## Cloning the Tutorial Repository
 
-TODO Once the example repository is ready.
+Clone [the tutorial infrastructure repository](https://github.com/LKummer/homelab-tutorial-infrastructure).
 
 ## Configuring Environment Variables
 
