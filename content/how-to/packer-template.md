@@ -12,7 +12,7 @@ If you have access to a GitLab instance, use GitLab CI instead.
 This guide assumes you are working on Linux. Use latest Ubuntu LTS for best compatibility.
 
 * Proxmox VE node.
-* Packer `v1.8.4` or similar installed.
+* Packer `v1.8.7` or similar installed.
 * [Packer Alpine cloud image repository](https://github.com/LKummer/packer-alpine) which we will be working inside.
 * Proxmox API Token, [see Proxmox API Tokens how-to guide for instructions]({{< relref "proxmox-api-tokens" >}}).
 
@@ -47,6 +47,12 @@ Replace it with the latest tag when reading.
 
 ```
 git checkout 3.17.0-1
+```
+
+Install the required Packer plugins:
+
+```
+packer init alpine.pkr.hcl
 ```
 
 Copy the `secrets.example.pkr.hcl` file to `secrets.pkr.hcl`.
