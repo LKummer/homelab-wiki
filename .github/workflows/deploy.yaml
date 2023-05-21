@@ -9,15 +9,18 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: https://lkummer.github.io/homelab-wiki
+      url: ${{ steps.pages-url.outputs.url }}
     steps:
+      - name: Set GitHub Pages URL variable
+        id: pages-url
+        run: echo "url=https://${GITHUB_REPOSITORY_OWNER,,}.github.io${GITHUB_REPOSITORY/${GITHUB_REPOSITORY_OWNER/}}" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v3
       - name: Use Node 18
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
       - run: npm ci
-      - run: npm run build -- --baseURL https://lkummer.github.io/homelab-wiki
+      - run: npm run build -- --baseURL '${{ steps.pages-url.outputs.url }}'
       - uses: actions/upload-pages-artifact@v1
         with:
           path: public
