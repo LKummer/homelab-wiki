@@ -24,13 +24,21 @@ Change to the `playbook` folder:
 cd playbook
 ```
 
-Install Ansible Collections from the requirements file:
+Create virtual environment and activate it:
 
 ```
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install all requirements:
+
+```
+pip install -r requirements.txt
 ansible-galaxy collection install --requirements requirements.yaml
 ```
 
-**Install collection dependencies every time before running Ansible.**
+**Install Ansible Galaxy requirements every time before running Ansible.**
 Collections are not scoped per project, and mixing collection versions between projects may be destructive.
 
 ## Editing Grafana and ArgoCD Hosts
@@ -40,13 +48,13 @@ The example uses `grafana.example.com` and `argo.example.com` for Grafana and Ar
 
 ```yaml
 # Inside playbook/main.yaml
-    - role: lkummer.homelab.observability
-      vars:
-        observability_grafana_host: grafana.example.com
-        # ...
-    - role: lkummer.homelab.argo
-      vars:
-        argo_host: argo.example.com
+- role: lkummer.homelab.observability
+  vars:
+    observability_grafana_host: grafana.example.com
+    # ...
+- role: lkummer.homelab.argo
+  vars:
+    argo_host: argo.example.com
 ```
 
 ## Editing Cloudflare Credentials For Certificate Issuing
@@ -57,12 +65,12 @@ Still inside `playbook/main.yaml`: Change `cert_manager_cloudflare_email` to you
 
 ```yaml
 # Inside playbook/main.yaml
-    - role: lkummer.homelab.cert_manager
-      vars:
-        cert_manager_cloudflare_email: you@example.com
-        # Use Ansible Vault for actual secrets!
-        cert_manager_cloudflare_token: REDACTED
-        cert_manager_cloudflare_zone: example.com
+- role: lkummer.homelab.cert_manager
+  vars:
+    cert_manager_cloudflare_email: you@example.com
+    # Use Ansible Vault for actual secrets!
+    cert_manager_cloudflare_token: REDACTED
+    cert_manager_cloudflare_zone: example.com
 ```
 
 **Do not commit secrets to Git. Use Ansible Vault or another secret storage solution.**
