@@ -19,6 +19,8 @@ If you are looking to set up automation for an existing repository,
 
 Create a new GitLab project.
 Do not push any commits to it yet.
+**Make sure it is private**
+CI artifacts may contain secrets.
 
 If you want to provision infrastructure locally, [prepare your local environment]({{< relref "gitlab-managed-state#preparing-local-environment" >}}).
 
@@ -39,8 +41,11 @@ Create the following environment variables:
 
 - `PM_API_TOKEN_ID` ID of the form `user@pve!token`
 - `PM_API_TOKEN_SECRET` secret of the ID stored in `PM_API_TOKEN_ID`
-- `SSH_PRIVATE_KEY_FILE` (file variable) content of `ci_key`, make sure it ends with an empty line
+- `SSH_PRIVATE_KEY_FILE` (file) content of `ci_key`, make sure it ends with an empty line
 - `SSH_PUBLIC_KEY` content of `ci_key.pub`
+- `ANSIBLE_VAULT_PASSWORD_FILE` (file, protected) Ansible Vault password
+
+Leave `ANSIBLE_VAULT_PASSWORD_FILE` unset if you do not need Ansible Vault.
 
 Delete the keys we created earlier:
 
