@@ -12,7 +12,7 @@ This configuration only works for domains using Cloudflare DNS.
 ## Variables
 
 * `cert_manager_chart_version` - Cert Manager operator Helm chart version to use. Default is `v1.10.1`.
-* `cert_manager_production_version` - Use Let's Encrypt production environment when `true`, staging environment when `false`. Default is `false`.
+* `cert_manager_production_server` - Use Let's Encrypt production environment when `true`, staging environment when `false`. Default is `false`.
 * `cert_manager_clusterissuer_name` - Name of ClusterIssuer resource to create. Default is `letsencrypt`.
 * `cert_manager_cloudflare_email` - Email for Cloudflare authentication and Let's Encrypt account. **Required**.
 * `cert_manager_cloudflare_token` - Token for Cloudflare authentication. **Required**.
