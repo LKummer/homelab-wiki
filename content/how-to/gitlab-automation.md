@@ -1,5 +1,5 @@
 ---
-title: How to deploy infrastructure with GitLab CI
+title: How to provision infrastructure with GitLab CI
 ---
 
 This tutorial walks you through cloning

@@ -1,6 +1,9 @@
 ---
-title: How to deploy applications with Argo CD
+title: How to deploy Helm charts with Argo CD
 ---
+
+This guide walks you through configuring a Helm deployment inside an
+infrastructure repository using Argo CD.
 
 ## Requirements
 
